@@ -1,11 +1,15 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import GreekTranslator from '@/components/GreekTranslator';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-background">
+      {/* Background Pattern */}
+      <div className="fixed inset-0 greek-pattern opacity-30 pointer-events-none"></div>
+      
+      {/* Main Content */}
+      <div className="relative z-10 py-8">
+        <GreekTranslator />
       </div>
     </div>
   );
