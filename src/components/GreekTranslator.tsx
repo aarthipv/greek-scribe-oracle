@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Languages, Sparkles, Loader } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,9 +6,11 @@ import TranslationOutput from './TranslationOutput';
 import LoadingSpinner from './LoadingSpinner';
 import { useToast } from '@/hooks/use-toast';
 
-const LatinTranslator: React.FC = () => {
+const GreekTranslator: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [translatedText, setTranslatedText] = useState('');
+  const [originalText, setOriginalText] = useState('');
+  const [groundTruth, setGroundTruth] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showTranslation, setShowTranslation] = useState(false);
   const { toast } = useToast();
@@ -18,19 +19,23 @@ const LatinTranslator: React.FC = () => {
     setSelectedImage(file);
     setShowTranslation(false);
     setTranslatedText('');
+    setOriginalText('');
+    setGroundTruth('');
   };
 
   const handleClearImage = () => {
     setSelectedImage(null);
     setShowTranslation(false);
     setTranslatedText('');
+    setOriginalText('');
+    setGroundTruth('');
   };
 
   const handleTranslate = async () => {
     if (!selectedImage) {
       toast({
         title: "No image selected",
-        description: "Please upload an image with Latin text first.",
+        description: "Please upload an image with Greek text first.",
         variant: "destructive",
       });
       return;
@@ -38,31 +43,32 @@ const LatinTranslator: React.FC = () => {
 
     setIsLoading(true);
     
-    // Simulate API call - replace with actual backend integration
     try {
-      // Mock delay to simulate processing
-      await new Promise(resolve => setTimeout(resolve, 3000));
-      
-      // Mock translation result
-      const mockTranslation = `This is a sample English translation of the Latin text from your image. 
+      const formData = new FormData();
+      formData.append('image', selectedImage);
 
-The translation process involved:
-1. Optical Character Recognition (OCR) to extract Latin text
-2. Advanced language processing to understand classical Latin context
-3. Accurate translation to English while preserving meaning and literary style
+      const response = await fetch('http://localhost:8081/api/ocr', {
+        method: 'POST',
+        body: formData,
+      });
 
-Your actual backend integration would replace this mock text with the real translated content from your Latin OCR and translation model.`;
+      if (!response.ok) {
+        throw new Error('Failed to process image');
+      }
 
-      setTranslatedText(mockTranslation);
+      const data = await response.json();
+      setOriginalText(data.originalText);
+      setGroundTruth(data.groundTruth);
+      setTranslatedText(data.translation);
       setShowTranslation(true);
       
       toast({
-        title: "Translation complete!",
-        description: "Your Latin text has been successfully translated to English.",
+        title: "Processing complete!",
+        description: "Your Greek text has been successfully processed.",
       });
     } catch (error) {
       toast({
-        title: "Translation failed",
+        title: "Processing failed",
         description: "There was an error processing your image. Please try again.",
         variant: "destructive",
       });
@@ -76,17 +82,17 @@ Your actual backend integration would replace this mock text with the real trans
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-3">
-          <div className="p-3 bg-latin-red rounded-xl">
+          <div className="p-3 bg-greek-blue rounded-xl">
             <Languages className="w-8 h-8 text-primary-foreground" />
           </div>
           <h1 className="text-4xl font-bold text-foreground">
-            Latin to English
+            Greek to English
           </h1>
-          <Sparkles className="w-6 h-6 text-latin-gold animate-pulse-soft" />
+          <Sparkles className="w-6 h-6 text-greek-gold animate-pulse-soft" />
         </div>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Upload an image containing Latin text and get an instant English translation. 
-          Our advanced OCR technology accurately reads and translates classical Latin characters.
+          Upload an image containing Greek text and get an instant English translation. 
+          Our advanced OCR technology accurately reads and translates classical Greek characters.
         </p>
       </div>
 
@@ -105,17 +111,17 @@ Your actual backend integration would replace this mock text with the real trans
               onClick={handleTranslate}
               disabled={isLoading}
               size="lg"
-              className="latin-gradient hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-3 text-lg font-semibold"
+              className="greek-gradient hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-3 text-lg font-semibold"
             >
               {isLoading ? (
                 <>
                   <Loader className="w-5 h-5 mr-2 animate-spin" />
-                  Translating...
+                  Processing...
                 </>
               ) : (
                 <>
                   <Languages className="w-5 h-5 mr-2" />
-                  Translate to English
+                  Process Image
                 </>
               )}
             </Button>
@@ -125,24 +131,51 @@ Your actual backend integration would replace this mock text with the real trans
 
       {/* Loading State */}
       {isLoading && (
-        <LoadingSpinner message="Processing your Latin text image..." />
+        <LoadingSpinner message="Processing your Greek text image..." />
       )}
 
       {/* Translation Output */}
-      <TranslationOutput
-        translatedText={translatedText}
-        isVisible={showTranslation}
-      />
+      {showTranslation && (
+        <div className="space-y-6">
+          {/* Original Text */}
+          <div className="bg-card border border-border rounded-lg p-6">
+            <h3 className="font-semibold text-card-foreground mb-4">OCR Result</h3>
+            <div className="bg-muted rounded-lg p-4">
+              <p className="text-black leading-relaxed whitespace-pre-wrap">
+                {originalText}
+              </p>
+            </div>
+          </div>
+
+          {/* Ground Truth */}
+          {groundTruth && (
+            <div className="bg-card border border-border rounded-lg p-6">
+              <h3 className="font-semibold text-card-foreground mb-4">Ground Truth</h3>
+              <div className="bg-muted rounded-lg p-4">
+                <p className="text-black leading-relaxed whitespace-pre-wrap">
+                  {groundTruth}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Translation */}
+          <TranslationOutput
+            translatedText={translatedText}
+            isVisible={true}
+          />
+        </div>
+      )}
 
       {/* Footer */}
       <div className="text-center pt-8 border-t border-border">
         <p className="text-sm text-muted-foreground">
           Powered by advanced OCR and translation technology • 
-          <span className="text-latin-red font-medium"> Preserving classical Latin heritage through technology</span>
+          <span className="text-greek-blue font-medium"> Preserving classical Greek heritage through technology</span>
         </p>
       </div>
     </div>
   );
 };
 
-export default LatinTranslator;
+export default GreekTranslator;

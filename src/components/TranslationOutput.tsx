@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Copy, Check, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -63,7 +62,7 @@ const TranslationOutput: React.FC<TranslationOutputProps> = ({ translatedText, i
       </div>
       
       <div className="bg-muted rounded-lg p-4 min-h-[120px]">
-        <p className="text-foreground leading-relaxed whitespace-pre-wrap">
+        <p className="text-black leading-relaxed whitespace-pre-wrap">
           {translatedText || 'Translation will appear here...'}
         </p>
       </div>
