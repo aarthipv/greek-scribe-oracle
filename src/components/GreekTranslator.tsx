@@ -7,7 +7,7 @@ import TranslationOutput from './TranslationOutput';
 import LoadingSpinner from './LoadingSpinner';
 import { useToast } from '@/hooks/use-toast';
 
-const GreekTranslator: React.FC = () => {
+const LatinTranslator: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [translatedText, setTranslatedText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +30,7 @@ const GreekTranslator: React.FC = () => {
     if (!selectedImage) {
       toast({
         title: "No image selected",
-        description: "Please upload an image with Greek text first.",
+        description: "Please upload an image with Latin text first.",
         variant: "destructive",
       });
       return;
@@ -44,21 +44,21 @@ const GreekTranslator: React.FC = () => {
       await new Promise(resolve => setTimeout(resolve, 3000));
       
       // Mock translation result
-      const mockTranslation = `This is a sample English translation of the Greek text from your image. 
+      const mockTranslation = `This is a sample English translation of the Latin text from your image. 
 
 The translation process involved:
-1. Optical Character Recognition (OCR) to extract Greek text
-2. Advanced language processing to understand context
-3. Accurate translation to English while preserving meaning
+1. Optical Character Recognition (OCR) to extract Latin text
+2. Advanced language processing to understand classical Latin context
+3. Accurate translation to English while preserving meaning and literary style
 
-Your actual backend integration would replace this mock text with the real translated content from your Greek OCR and translation model.`;
+Your actual backend integration would replace this mock text with the real translated content from your Latin OCR and translation model.`;
 
       setTranslatedText(mockTranslation);
       setShowTranslation(true);
       
       toast({
         title: "Translation complete!",
-        description: "Your Greek text has been successfully translated to English.",
+        description: "Your Latin text has been successfully translated to English.",
       });
     } catch (error) {
       toast({
@@ -76,17 +76,17 @@ Your actual backend integration would replace this mock text with the real trans
       {/* Header */}
       <div className="text-center space-y-4">
         <div className="flex items-center justify-center gap-3">
-          <div className="p-3 bg-greek-blue rounded-xl">
+          <div className="p-3 bg-latin-red rounded-xl">
             <Languages className="w-8 h-8 text-primary-foreground" />
           </div>
           <h1 className="text-4xl font-bold text-foreground">
-            Greek to English
+            Latin to English
           </h1>
-          <Sparkles className="w-6 h-6 text-greek-gold animate-pulse-soft" />
+          <Sparkles className="w-6 h-6 text-latin-gold animate-pulse-soft" />
         </div>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Upload an image containing Greek text and get an instant English translation. 
-          Our advanced OCR technology accurately reads and translates Greek characters.
+          Upload an image containing Latin text and get an instant English translation. 
+          Our advanced OCR technology accurately reads and translates classical Latin characters.
         </p>
       </div>
 
@@ -105,7 +105,7 @@ Your actual backend integration would replace this mock text with the real trans
               onClick={handleTranslate}
               disabled={isLoading}
               size="lg"
-              className="greek-gradient hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-3 text-lg font-semibold"
+              className="latin-gradient hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl px-8 py-3 text-lg font-semibold"
             >
               {isLoading ? (
                 <>
@@ -125,7 +125,7 @@ Your actual backend integration would replace this mock text with the real trans
 
       {/* Loading State */}
       {isLoading && (
-        <LoadingSpinner message="Processing your Greek text image..." />
+        <LoadingSpinner message="Processing your Latin text image..." />
       )}
 
       {/* Translation Output */}
@@ -138,11 +138,11 @@ Your actual backend integration would replace this mock text with the real trans
       <div className="text-center pt-8 border-t border-border">
         <p className="text-sm text-muted-foreground">
           Powered by advanced OCR and translation technology • 
-          <span className="text-greek-blue font-medium"> Supporting Greek heritage through technology</span>
+          <span className="text-latin-red font-medium"> Preserving classical Latin heritage through technology</span>
         </p>
       </div>
     </div>
   );
 };
 
-export default GreekTranslator;
+export default LatinTranslator;

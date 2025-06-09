@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Greek Heritage Inspired Design System */
+/* Latin Heritage Inspired Design System */
 
 @layer base {
   :root {
@@ -16,8 +16,8 @@
     --popover: 30 41 59;
     --popover-foreground: 248 250 252;
 
-    --primary: 59 130 246;
-    --primary-foreground: 15 23 42;
+    --primary: 185 28 28;
+    --primary-foreground: 248 250 252;
 
     --secondary: 51 65 85;
     --secondary-foreground: 248 250 252;
@@ -33,25 +33,25 @@
 
     --border: 51 65 85;
     --input: 51 65 85;
-    --ring: 59 130 246;
+    --ring: 185 28 28;
 
     --radius: 0.75rem;
 
-    /* Greek-inspired custom colors for dark theme */
-    --greek-blue: 59 130 246;
-    --greek-light-blue: 96 165 250;
-    --greek-white: 15 23 42;
-    --greek-gold: 251 191 36;
-    --greek-dark: 248 250 252;
+    /* Latin-inspired custom colors for dark theme */
+    --latin-red: 185 28 28;
+    --latin-maroon: 127 29 29;
+    --latin-gold: 251 191 36;
+    --latin-cream: 15 23 42;
+    --latin-dark: 248 250 252;
 
     --sidebar-background: 15 23 42;
     --sidebar-foreground: 248 250 252;
-    --sidebar-primary: 59 130 246;
-    --sidebar-primary-foreground: 15 23 42;
+    --sidebar-primary: 185 28 28;
+    --sidebar-primary-foreground: 248 250 252;
     --sidebar-accent: 51 65 85;
     --sidebar-accent-foreground: 248 250 252;
     --sidebar-border: 51 65 85;
-    --sidebar-ring: 59 130 246;
+    --sidebar-ring: 185 28 28;
   }
 
   .dark {
@@ -64,8 +64,8 @@
     --popover: 30 41 59;
     --popover-foreground: 248 250 252;
 
-    --primary: 59 130 246;
-    --primary-foreground: 15 23 42;
+    --primary: 185 28 28;
+    --primary-foreground: 248 250 252;
 
     --secondary: 51 65 85;
     --secondary-foreground: 248 250 252;
@@ -81,22 +81,22 @@
 
     --border: 51 65 85;
     --input: 51 65 85;
-    --ring: 59 130 246;
+    --ring: 185 28 28;
 
-    --greek-blue: 59 130 246;
-    --greek-light-blue: 96 165 250;
-    --greek-white: 15 23 42;
-    --greek-gold: 251 191 36;
-    --greek-dark: 248 250 252;
+    --latin-red: 185 28 28;
+    --latin-maroon: 127 29 29;
+    --latin-gold: 251 191 36;
+    --latin-cream: 15 23 42;
+    --latin-dark: 248 250 252;
 
     --sidebar-background: 15 23 42;
     --sidebar-foreground: 248 250 252;
-    --sidebar-primary: 59 130 246;
-    --sidebar-primary-foreground: 15 23 42;
+    --sidebar-primary: 185 28 28;
+    --sidebar-primary-foreground: 248 250 252;
     --sidebar-accent: 51 65 85;
     --sidebar-accent-foreground: 248 250 252;
     --sidebar-border: 51 65 85;
-    --sidebar-ring: 59 130 246;
+    --sidebar-ring: 185 28 28;
   }
 }
 
@@ -111,13 +111,13 @@
 }
 
 @layer utilities {
-  .greek-gradient {
-    background: linear-gradient(135deg, hsl(var(--greek-blue)) 0%, hsl(var(--greek-light-blue)) 100%);
+  .latin-gradient {
+    background: linear-gradient(135deg, hsl(var(--latin-red)) 0%, hsl(var(--latin-maroon)) 100%);
   }
   
-  .greek-pattern {
+  .latin-pattern {
     background-image: 
-      linear-gradient(45deg, transparent 40%, hsla(var(--greek-blue), 0.1) 40%, hsla(var(--greek-blue), 0.1) 60%, transparent 60%);
+      linear-gradient(45deg, transparent 40%, hsla(var(--latin-red), 0.1) 40%, hsla(var(--latin-red), 0.1) 60%, transparent 60%);
     background-size: 20px 20px;
   }
 }

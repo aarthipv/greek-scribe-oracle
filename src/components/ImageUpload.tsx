@@ -53,7 +53,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageSelect, selectedImage,
         <div className="relative bg-card border border-border rounded-lg p-4 animate-fade-in">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
-              <ImageIcon className="w-5 h-5 text-greek-blue" />
+              <ImageIcon className="w-5 h-5 text-latin-red" />
               <span className="font-medium text-card-foreground">{selectedImage.name}</span>
             </div>
             <Button
@@ -83,8 +83,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageSelect, selectedImage,
             relative border-2 border-dashed rounded-lg p-8 text-center cursor-pointer
             transition-all duration-300 ease-in-out
             ${isDragging 
-              ? 'border-greek-blue bg-accent/50 scale-[1.02]' 
-              : 'border-border hover:border-greek-blue hover:bg-accent/30'
+              ? 'border-latin-red bg-accent/50 scale-[1.02]' 
+              : 'border-border hover:border-latin-red hover:bg-accent/30'
             }
             group
           `}
@@ -93,15 +93,15 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageSelect, selectedImage,
             <div className={`
               p-4 rounded-full transition-all duration-300
               ${isDragging 
-                ? 'bg-greek-blue text-primary-foreground scale-110' 
-                : 'bg-accent text-accent-foreground group-hover:bg-greek-blue group-hover:text-primary-foreground group-hover:scale-110'
+                ? 'bg-latin-red text-primary-foreground scale-110' 
+                : 'bg-accent text-accent-foreground group-hover:bg-latin-red group-hover:text-primary-foreground group-hover:scale-110'
               }
             `}>
               <Upload className="w-8 h-8" />
             </div>
             <div className="space-y-2">
               <p className="text-lg font-medium text-foreground">
-                {isDragging ? 'Drop your image here' : 'Upload Greek text image'}
+                {isDragging ? 'Drop your image here' : 'Upload Latin text image'}
               </p>
               <p className="text-sm text-muted-foreground">
                 Drag and drop or click to select • JPG, PNG supported

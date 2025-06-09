@@ -39,14 +39,14 @@ const TranslationOutput: React.FC<TranslationOutputProps> = ({ translatedText, i
     <div className="bg-card border border-border rounded-lg p-6 animate-slide-up">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <FileText className="w-5 h-5 text-greek-blue" />
+          <FileText className="w-5 h-5 text-latin-red" />
           <h3 className="font-semibold text-card-foreground">English Translation</h3>
         </div>
         <Button
           onClick={handleCopy}
           variant="outline"
           size="sm"
-          className="gap-2 hover:bg-greek-blue hover:text-primary-foreground transition-colors"
+          className="gap-2 hover:bg-latin-red hover:text-primary-foreground transition-colors"
         >
           {copied ? (
             <>
