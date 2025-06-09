@@ -7,51 +7,51 @@
 
 @layer base {
   :root {
-    --background: 255 255 255;
-    --foreground: 15 23 42;
+    --background: 15 23 42;
+    --foreground: 248 250 252;
 
-    --card: 248 250 252;
-    --card-foreground: 15 23 42;
+    --card: 30 41 59;
+    --card-foreground: 248 250 252;
 
-    --popover: 255 255 255;
-    --popover-foreground: 15 23 42;
+    --popover: 30 41 59;
+    --popover-foreground: 248 250 252;
 
-    --primary: 30 64 175;
-    --primary-foreground: 255 255 255;
+    --primary: 59 130 246;
+    --primary-foreground: 15 23 42;
 
-    --secondary: 226 232 240;
-    --secondary-foreground: 51 65 85;
+    --secondary: 51 65 85;
+    --secondary-foreground: 248 250 252;
 
-    --muted: 241 245 249;
-    --muted-foreground: 71 85 105;
+    --muted: 51 65 85;
+    --muted-foreground: 148 163 184;
 
-    --accent: 219 234 254;
-    --accent-foreground: 30 64 175;
+    --accent: 51 65 85;
+    --accent-foreground: 248 250 252;
 
     --destructive: 239 68 68;
-    --destructive-foreground: 255 255 255;
+    --destructive-foreground: 248 250 252;
 
-    --border: 203 213 225;
-    --input: 226 232 240;
-    --ring: 30 64 175;
+    --border: 51 65 85;
+    --input: 51 65 85;
+    --ring: 59 130 246;
 
     --radius: 0.75rem;
 
-    /* Greek-inspired custom colors */
-    --greek-blue: 30 64 175;
-    --greek-light-blue: 59 130 246;
-    --greek-white: 255 255 255;
+    /* Greek-inspired custom colors for dark theme */
+    --greek-blue: 59 130 246;
+    --greek-light-blue: 96 165 250;
+    --greek-white: 15 23 42;
     --greek-gold: 251 191 36;
-    --greek-dark: 15 23 42;
+    --greek-dark: 248 250 252;
 
-    --sidebar-background: 255 255 255;
-    --sidebar-foreground: 15 23 42;
-    --sidebar-primary: 30 64 175;
-    --sidebar-primary-foreground: 255 255 255;
-    --sidebar-accent: 241 245 249;
-    --sidebar-accent-foreground: 30 64 175;
-    --sidebar-border: 203 213 225;
-    --sidebar-ring: 30 64 175;
+    --sidebar-background: 15 23 42;
+    --sidebar-foreground: 248 250 252;
+    --sidebar-primary: 59 130 246;
+    --sidebar-primary-foreground: 15 23 42;
+    --sidebar-accent: 51 65 85;
+    --sidebar-accent-foreground: 248 250 252;
+    --sidebar-border: 51 65 85;
+    --sidebar-ring: 59 130 246;
   }
 
   .dark {
@@ -117,7 +117,7 @@
   
   .greek-pattern {
     background-image: 
-      linear-gradient(45deg, transparent 40%, hsla(var(--greek-blue), 0.05) 40%, hsla(var(--greek-blue), 0.05) 60%, transparent 60%);
+      linear-gradient(45deg, transparent 40%, hsla(var(--greek-blue), 0.1) 40%, hsla(var(--greek-blue), 0.1) 60%, transparent 60%);
     background-size: 20px 20px;
   }
 }
